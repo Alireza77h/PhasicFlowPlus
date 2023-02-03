@@ -59,7 +59,7 @@ public:
 		dictionary
 	);
 
-	bool internalFieldUpdate() override;
+	bool calculatePorosity() override;
 
 }; 
 

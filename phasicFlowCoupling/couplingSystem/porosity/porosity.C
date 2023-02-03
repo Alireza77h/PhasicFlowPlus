@@ -34,10 +34,11 @@ pFlow::coupling::porosity::porosity(
 	        "alpha",
 	        cMesh.mesh().time().timeName(),
 	        cMesh.mesh(),
-	        Foam::IOobject::MUST_READ,
+	        Foam::IOobject::READ_IF_PRESENT,
 	        Foam::IOobject::AUTO_WRITE
 	    ),
-    cMesh.mesh()
+    cMesh.mesh(),
+    Foam::dimless
 	),
 	alphaMin_(dict.lookup<real>("alphaMin")),
 	cMesh_(cMesh),
@@ -82,11 +83,4 @@ pFlow::uniquePtr<pFlow::coupling::porosity>
 	}
 
 	return nullptr;
-}
-
-
-void pFlow::coupling::porosity::calculatePorosity()
-{
-	this->internalFieldUpdate();
-	this->correctBoundaryConditions();
 }

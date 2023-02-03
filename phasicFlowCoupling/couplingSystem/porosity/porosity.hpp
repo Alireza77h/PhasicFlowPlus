@@ -109,10 +109,10 @@ public:
 	}
 
 	
-	void calculatePorosity();
-
 	virtual
-	bool internalFieldUpdate() = 0;
+	bool calculatePorosity() = 0;
+
+
 
 	static
 	uniquePtr<porosity> create(
